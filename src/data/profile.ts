@@ -1,4 +1,15 @@
-export interface Experience { organization: string; role: string; period: string; bullets: string[] }
+export interface Experience {
+  organization: string;
+  role: string;
+  period: string;
+  caseStudy: {
+    context: string;
+    responsibility: string;
+    process: string;
+    deliverables: string;
+    toolsAndControls: string;
+  };
+}
 export interface Education { institution: string; degree: string; status?: string; period?: string; website: string }
 export interface FieldExperience { organization: string; role: string; period: string; summary: string }
 
@@ -14,21 +25,23 @@ export const profile = {
   experiences: [
     {
       organization: 'Bidakara Medical Center (BIMC)', role: 'Admission / Frontliner', period: '20 January 2025 — Present',
-      bullets: [
-        'Manage outpatient registration and ODC pre-admission in line with operational procedures.',
-        'Verify patient, insurance, referral, and administrative information while protecting confidentiality.',
-        'Support online registration and patient information services, including through WhatsApp.',
-        'Coordinate with medical staff and cashiers to support smooth patient-service workflows.',
-        'Respond to initial patient concerns with clear, professional communication.',
-      ],
+      caseStudy: {
+        context: 'Outpatient registration and one-day-care (ODC) pre-admission at a medical center.',
+        responsibility: 'Verify patient, insurance, referral, and administrative information while protecting confidentiality.',
+        process: 'Support online registration and patient information via WhatsApp, then coordinate with medical staff and cashiers. Respond to initial patient concerns.',
+        deliverables: 'Patient registration, ODC pre-admission, and coordinated service handoffs.',
+        toolsAndControls: 'Clinic information system, WhatsApp, operational procedures, and patient-data confidentiality.',
+      },
     },
     {
       organization: 'Bamed Health Care Group', role: 'Frontliner', period: '16 February 2023 — 20 June 2024',
-      bullets: [
-        'Supported patient service through invoices, treatment information, and insurance-claim payment administration.',
-        'Prepared recurring operational reports using Microsoft Excel and Word.',
-        'Maintained weekly petty-cash reports and monthly records for utilities, payroll deductions, medical-service deductions, and clinic supplies.',
-      ],
+      caseStudy: {
+        context: 'Patient-facing billing and recurring clinic administration.',
+        responsibility: 'Handle patient invoices, treatment information, and insurance-claim payment administration.',
+        process: 'Prepare operational reports and track petty cash, utilities, payroll and medical-service deductions, and clinic supplies.',
+        deliverables: 'Weekly petty-cash reports and monthly records for operational costs, deductions, and clinic supplies.',
+        toolsAndControls: 'Microsoft Excel and Word; weekly and monthly reporting cadence.',
+      },
     },
   ] satisfies Experience[],
   education: [

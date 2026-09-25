@@ -68,13 +68,21 @@ const currentYear = new Date().getFullYear();
       <div class="container section-grid">
         <div class="section-aside"><p class="eyebrow">02 / Experience</p><span class="section-rule"></span><span class="aside-note">Service, accuracy,<br />and coordination.</span></div>
         <div class="section-main">
-          <h2 id="experience-title">Experience across healthcare service and administration.</h2>
+          <h2 id="experience-title">Selected case studies in healthcare administration.</h2>
           <div class="experience-list">
             {profile.experiences.map((experience, index) => (
               <article class="experience-item">
                 <div class="experience-top"><span class="item-index">0{index + 1}</span><p class="experience-period">{experience.period}</p></div>
-                <div><h3>{experience.organization}</h3><p class="item-role">{experience.role}</p></div>
-                <ul>{experience.bullets.map((bullet) => <li>{bullet}</li>)}</ul>
+                <div class="case-study">
+                  <h3>{experience.organization}</h3><p class="item-role">{experience.role}</p>
+                  <dl class="case-study-details">
+                    <div><dt>Context</dt><dd>{experience.caseStudy.context}</dd></div>
+                    <div><dt>Responsibility</dt><dd>{experience.caseStudy.responsibility}</dd></div>
+                    <div><dt>Process</dt><dd>{experience.caseStudy.process}</dd></div>
+                    <div><dt>Deliverables & scope</dt><dd>{experience.caseStudy.deliverables}</dd></div>
+                    <div><dt>Tools & controls</dt><dd>{experience.caseStudy.toolsAndControls}</dd></div>
+                  </dl>
+                </div>
               </article>
             ))}
           </div>
@@ -93,8 +101,9 @@ const currentYear = new Date().getFullYear();
             ))}
           </div>
           <div class="field-block">
-            <div class="field-heading"><p class="eyebrow">Field experience</p><h3>Early field experience in environmental health and occupational safety.</h3></div>
-            <div class="field-list">{profile.fieldExperience.map((item) => <article class="field-item"><div><h4>{item.organization}</h4><p>{item.role}</p></div><p class="field-summary">{item.summary}</p><p class="field-period">{item.period}</p></article>)}</div>
+            <div class="field-heading"><p class="eyebrow">Field experience</p><h3>Environmental health and safety foundation.</h3></div>
+            <p class="field-intro">Four placements across hospital sanitation, QHSE, primary-care safety assessment, and sanitation-clinic support.</p>
+            <div class="field-list">{profile.fieldExperience.map((item) => <article class="field-item"><div><h4>{item.organization}</h4><p>{item.role}</p></div><p class="field-period">{item.period}</p></article>)}</div>
           </div>
         </div>
       </div>
@@ -110,7 +119,7 @@ const currentYear = new Date().getFullYear();
     <section class="section development-section" id="development" aria-labelledby="development-title">
       <div class="container section-grid">
         <div class="section-aside"><p class="eyebrow">05 / Development</p><span class="section-rule"></span><span class="aside-note">Learning in service<br />of better care.</span></div>
-        <div class="section-main"><h2 id="development-title">Continuing to strengthen healthcare service skills.</h2><article class="training"><div class="training-copy"><p class="eyebrow">{profile.development.provider} · {profile.development.date}</p><h3>{profile.development.title}</h3><p>Training focused on patient experience, clear service communication, and professional complaint handling.</p><div class="tag-list">{profile.development.topics.map((topic) => <span>{topic}</span>)}</div></div><div class="training-meta"><span>{profile.development.duration}</span><span>Certificate<br />{profile.development.certificateNumber}</span><a href={profile.development.certificateUrl} target="_blank" rel="noreferrer">View certificate <span aria-hidden="true">↗</span></a></div></article></div>
+        <div class="section-main"><h2 id="development-title">Continuing to strengthen healthcare service skills.</h2><article class="training"><div class="training-copy"><p class="eyebrow">{profile.development.provider} · {profile.development.date}</p><h3>{profile.development.title}</h3><p>Training focused on patient experience, clear service communication, and professional complaint handling.</p><p class="training-connection">Practice connection: The training reinforces patient-experience, complaint-handling, and service-handoff skills used in front-line healthcare work.</p><div class="tag-list">{profile.development.topics.map((topic) => <span>{topic}</span>)}</div></div><div class="training-meta"><span>{profile.development.duration}</span><span>Certificate<br />{profile.development.certificateNumber}</span><a href={profile.development.certificateUrl} target="_blank" rel="noreferrer">View certificate <span aria-hidden="true">↗</span></a></div></article></div>
       </div>
     </section>
 
