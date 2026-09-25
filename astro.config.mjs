@@ -2,11 +2,15 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-const deploymentUrl = process.env.SITE_URL
-  ? new URL(process.env.SITE_URL).toString()
-  : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : undefined;
+const siteUrl = process.env.SITE_URL?.trim();
+const vercelUrl = process.env.VERCEL_URL?.trim();
+const urlInput = siteUrl || vercelUrl;
+const normalizedUrl = urlInput
+  ? /^(https?):\/\//i.test(urlInput)
+    ? urlInput
+    : `https://${urlInput}`
+  : undefined;
+const deploymentUrl = normalizedUrl ? new URL(normalizedUrl).toString() : undefined;
 
 export default defineConfig({
   ...(deploymentUrl ? { site: deploymentUrl } : {}),
