@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string }
+const {
+  title = 'Husni Attin — Healthcare Administration & Public Health',
+  description = 'Professional profile of Husni Attin, with experience in healthcare services and administration, a background in Environmental Health, and continued study in Public Health.',
+} = Astro.props;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const linkedIn = 'https://www.linkedin.com/in/husni-attin-83613224a/';
+const personSchema = {
+  '@context': 'https://schema.org', '@type': 'Person', name: 'Husni Attin',
+  jobTitle: 'Admission / Frontliner', worksFor: { '@type': 'Organization', name: 'Bidakara Medical Center' },
+  alumniOf: { '@type': 'EducationalOrganization', name: 'Poltekkes Kemenkes Jakarta II' },
+  knowsAbout: ['Healthcare Administration', 'Environmental Health', 'Public Health', 'Patient Admission', 'Healthcare Service'],
+  sameAs: [linkedIn], address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f2ea" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {Astro.site && <link rel="sitemap" href={new URL('sitemap-index.xml', Astro.site)} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {Astro.site && <meta property="og:image" content={new URL('/og/husni-attin-og.jpg', Astro.site)} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {Astro.site && <meta name="twitter:image" content={new URL('/og/husni-attin-og.jpg', Astro.site)} />}
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <title>{title}</title>
+  </head>
+  <body><slot /></body>
+</html>

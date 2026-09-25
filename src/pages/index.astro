@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/husni-attin-portrait.png';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="wordmark" href="#top" aria-label="Husni Attin, back to top">HUSNI ATTIN<span>.</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#profile">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#development">Development</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile, opens in a new tab">LinkedIn <span aria-hidden="true">↗</span></a>
+      <button class="language-toggle" type="button" data-language-toggle aria-label="Ganti bahasa ke Bahasa Indonesia">ID</button>
+      <details class="mobile-nav">
+        <summary aria-label="Open navigation menu"><span></span><span></span></summary>
+        <nav aria-label="Mobile navigation">
+          <a href="#profile">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#development">Development</a><a href="#contact">Contact</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Healthcare administration · Public health</p>
+        <h1 id="hero-title">Husni<br /><span>Attin</span></h1>
+        <p class="hero-roles">Healthcare Administration <span>·</span> Environmental Health <span>·</span> Public Health</p>
+        <p class="hero-summary">{profile.summary}</p>
+        <p class="hero-now">Currently working in healthcare services while continuing my studies in Public Health.</p>
+        <p class="hero-current">{profile.experiences[0].role} at {profile.experiences[0].organization}</p>
+        <div class="hero-meta"><span>{profile.location}</span><span class="meta-separator"></span><span>{profile.careerTarget}</span></div>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#experience">View experience <span aria-hidden="true">↓</span></a>
+          <a class="button button-outline" href={profile.cvUrl} download>Download CV <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="hero-portrait">
+        <Image src={portrait} alt={profile.portraitAlt} widths={[420, 640, 840]} sizes="(max-width: 760px) 88vw, 40vw" quality={82} format="webp" priority />
+        <figcaption><span>HUSNI ATTIN</span><span>JAKARTA, INDONESIA</span></figcaption>
+      </figure>
+      <div class="hero-index" aria-hidden="true">01 <span>—</span> 06</div>
+    </section>
+
+    <section class="section profile-section" id="profile" aria-labelledby="profile-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">01 / Profile</p><span class="section-rule"></span><span class="aside-note">A considered approach<br />to healthcare service.</span></div>
+        <div class="section-main">
+          <h2 id="profile-title">Healthcare service experience grounded in environmental health.</h2>
+          <div class="profile-columns">
+            <p>I work in healthcare services with hands-on experience in patient admission, administration, documentation, insurance verification, reporting, and front-line communication.</p>
+            <p>My academic background in Environmental Health has shaped an attentive approach to safety, sanitation, accuracy, and service quality. I am continuing my studies in Public Health while developing my career toward healthcare administration.</p>
+          </div>
+          <dl class="snapshot">
+            <div><dt>Current role</dt><dd>Admission / Frontliner</dd></div><div><dt>Organization</dt><dd>Bidakara Medical Center</dd></div><div><dt>Education</dt><dd>D-III Environmental Health</dd></div><div><dt>Current study</dt><dd>Bachelor’s in Public Health</dd></div><div><dt>Career focus</dt><dd>Healthcare Administration</dd></div><div><dt>Location</dt><dd>Jakarta, Indonesia</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">02 / Experience</p><span class="section-rule"></span><span class="aside-note">Service, accuracy,<br />and coordination.</span></div>
+        <div class="section-main">
+          <h2 id="experience-title">Experience across healthcare service and administration.</h2>
+          <div class="experience-list">
+            {profile.experiences.map((experience, index) => (
+              <article class="experience-item">
+                <div class="experience-top"><span class="item-index">0{index + 1}</span><p class="experience-period">{experience.period}</p></div>
+                <div><h3>{experience.organization}</h3><p class="item-role">{experience.role}</p></div>
+                <ul>{experience.bullets.map((bullet) => <li>{bullet}</li>)}</ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section education-section" id="education" aria-labelledby="education-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">03 / Education</p><span class="section-rule"></span><span class="aside-note">A broader foundation<br />in health.</span></div>
+        <div class="section-main">
+          <h2 id="education-title">Building a broader foundation in health and healthcare operations.</h2>
+          <div class="education-list">
+            {profile.education.map((education, index) => (
+              <article class="education-item"><span class="item-index">0{index + 1}</span><div><h3>{education.degree}</h3><a href={education.website} target="_blank" rel="noreferrer">{education.institution} <span aria-hidden="true">↗</span></a></div><p class="education-status">{education.status ?? education.period}</p></article>
+            ))}
+          </div>
+          <div class="field-block">
+            <div class="field-heading"><p class="eyebrow">Field experience</p><h3>Early field experience in environmental health and occupational safety.</h3></div>
+            <div class="field-list">{profile.fieldExperience.map((item) => <article class="field-item"><div><h4>{item.organization}</h4><p>{item.role}</p></div><p class="field-summary">{item.summary}</p><p class="field-period">{item.period}</p></article>)}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section focus-section" id="focus" aria-labelledby="focus-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">04 / Focus</p><span class="section-rule"></span><span class="aside-note">Capabilities shaped<br />by practice.</span></div>
+        <div class="section-main"><h2 id="focus-title">Capabilities shaped by healthcare service and environmental health.</h2><div class="focus-list">{profile.focusAreas.map(([title, copy], index) => <article class="focus-item"><span class="item-index">0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div>
+      </div>
+    </section>
+
+    <section class="section development-section" id="development" aria-labelledby="development-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">05 / Development</p><span class="section-rule"></span><span class="aside-note">Learning in service<br />of better care.</span></div>
+        <div class="section-main"><h2 id="development-title">Continuing to strengthen healthcare service skills.</h2><article class="training"><div class="training-copy"><p class="eyebrow">{profile.development.provider} · {profile.development.date}</p><h3>{profile.development.title}</h3><p>Training focused on patient experience, clear service communication, and professional complaint handling.</p><div class="tag-list">{profile.development.topics.map((topic) => <span>{topic}</span>)}</div></div><div class="training-meta"><span>{profile.development.duration}</span><span>Certificate<br />{profile.development.certificateNumber}</span><a href={profile.development.certificateUrl} target="_blank" rel="noreferrer">View certificate <span aria-hidden="true">↗</span></a></div></article></div>
+      </div>
+    </section>
+
+    <section class="section values-section" aria-labelledby="values-title">
+      <div class="container section-grid">
+        <div class="section-aside"><p class="eyebrow">How I work</p><span class="section-rule"></span></div>
+        <div class="section-main"><h2 id="values-title">Steady, thoughtful support for people and processes.</h2><div class="values-list">{profile.values.map(([title, copy]) => <article><h3>{title}</h3><p>{copy}</p></article>)}</div></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-inner"><p class="eyebrow">06 / Contact</p><div class="contact-content"><h2 id="contact-title">Let’s connect.</h2><p>I am open to Healthcare Administration opportunities in Jakarta and professional connections across healthcare and public health.</p><div class="contact-actions"><a class="button button-light" href={`mailto:${profile.email}`}>Email me <span aria-hidden="true">↗</span></a><a class="contact-text-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="contact-text-link" href={profile.cvUrl} download>Download CV ↓</a></div></div><a class="contact-email" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><p>© {currentYear} Husni Attin</p><nav aria-label="Footer navigation"><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={`mailto:${profile.email}`}>Email</a><a href="#top">Back to top ↑</a></nav></div></footer>
+  <script src="../scripts/language-toggle.ts"></script>
+</BaseLayout>
