@@ -29,12 +29,10 @@ const currentYear = new Date().getFullYear();
   <main id="main">
     <section class="hero container" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> Healthcare administration · Public health</p>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Jakarta-based healthcare operations professional</p>
         <h1 id="hero-title">Husni<br /><span>Attin</span></h1>
-        <p class="hero-roles">Healthcare Administration <span>·</span> Environmental Health <span>·</span> Public Health</p>
+        <p class="hero-roles">Patient Admission <span>·</span> Healthcare Administration</p>
         <p class="hero-summary">{profile.summary}</p>
-        <p class="hero-now">Currently working in healthcare services while continuing my studies in Public Health.</p>
-        <p class="hero-current">{profile.experiences[0].role} at {profile.experiences[0].organization}</p>
         <div class="hero-meta"><span>{profile.location}</span><span class="meta-separator"></span><span>{profile.careerTarget}</span></div>
         <div class="hero-actions">
           <a class="button button-dark" href="#experience">View experience <span aria-hidden="true">↓</span></a>
@@ -54,12 +52,14 @@ const currentYear = new Date().getFullYear();
         <div class="section-main">
           <h2 id="profile-title">Healthcare service experience grounded in environmental health.</h2>
           <div class="profile-columns">
-            <p>I work in healthcare services with hands-on experience in patient admission, administration, documentation, insurance verification, reporting, and front-line communication.</p>
-            <p>My academic background in Environmental Health has shaped an attentive approach to safety, sanitation, accuracy, and service quality. I am continuing my studies in Public Health while developing my career toward healthcare administration.</p>
+            {profile.profileNarrative.map((paragraph) => <p>{paragraph}</p>)}
           </div>
           <dl class="snapshot">
             <div><dt>Current role</dt><dd>Admission / Frontliner</dd></div><div><dt>Organization</dt><dd>Bidakara Medical Center</dd></div><div><dt>Education</dt><dd>D-III Environmental Health</dd></div><div><dt>Current study</dt><dd>Bachelor’s in Public Health</dd></div><div><dt>Career focus</dt><dd>Healthcare Administration</dd></div><div><dt>Location</dt><dd>Jakarta, Indonesia</dd></div>
           </dl>
+          <div class="tag-list operational-tools" aria-label="Operational tools and workflows">
+            {profile.operationalTools.map((tool) => <span>{tool}</span>)}
+          </div>
         </div>
       </div>
     </section>
@@ -75,13 +75,8 @@ const currentYear = new Date().getFullYear();
                 <div class="experience-top"><span class="item-index">0{index + 1}</span><p class="experience-period">{experience.period}</p></div>
                 <div class="case-study">
                   <h3>{experience.organization}</h3><p class="item-role">{experience.role}</p>
-                  <dl class="case-study-details">
-                    <div><dt>Context</dt><dd>{experience.caseStudy.context}</dd></div>
-                    <div><dt>Responsibility</dt><dd>{experience.caseStudy.responsibility}</dd></div>
-                    <div><dt>Process</dt><dd>{experience.caseStudy.process}</dd></div>
-                    <div><dt>Deliverables & scope</dt><dd>{experience.caseStudy.deliverables}</dd></div>
-                    <div><dt>Tools & controls</dt><dd>{experience.caseStudy.toolsAndControls}</dd></div>
-                  </dl>
+                  <ul class="experience-highlights">{experience.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+                  <p class="experience-tools"><strong>Tools & controls:</strong> {experience.tools}</p>
                 </div>
               </article>
             ))}
@@ -131,7 +126,7 @@ const currentYear = new Date().getFullYear();
     </section>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-inner"><p class="eyebrow">06 / Contact</p><div class="contact-content"><h2 id="contact-title">Let’s connect.</h2><p>I am open to Healthcare Administration opportunities in Jakarta and professional connections across healthcare and public health.</p><div class="contact-actions"><a class="button button-light" href={`mailto:${profile.email}`}>Email me <span aria-hidden="true">↗</span></a><a class="contact-text-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="contact-text-link" href={profile.cvUrl} download>Download CV ↓</a></div></div><a class="contact-email" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a></div>
+      <div class="container contact-inner"><p class="eyebrow">06 / Contact</p><div class="contact-content"><h2 id="contact-title">Available for healthcare administration opportunities.</h2><p>Open to Patient Admission, Front Office, and Healthcare Administration opportunities in Jakarta. For an interview, recruitment discussion, or professional connection, email Husni or download the CV.</p><div class="contact-actions"><a class="button button-light" href={`mailto:${profile.email}?subject=Healthcare%20Administration%20Opportunity`}>Email Husni About an Opportunity <span aria-hidden="true">↗</span></a><a class="contact-text-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="contact-text-link" href={profile.cvUrl} download>Download CV ↓</a></div></div><a class="contact-email" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
 

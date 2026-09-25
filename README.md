@@ -102,3 +102,11 @@ npm run build
 ```
 
 Jangan commit `.env`, private key, token deployment, atau kredensial server.
+
+## Nice-to-have later
+
+- Menambahkan metrik terverifikasi pada setiap pengalaman kerja, seperti volume registrasi, kelengkapan verifikasi, atau frekuensi laporan.
+- Menambahkan 2–4 sertifikat atau pelatihan relevan yang dapat diverifikasi.
+- Menyediakan profil profesional satu halaman dalam format PDF untuk rekruter rumah sakit dan klinik.
+- Menguji situs secara manual pada Android Chrome, iPhone Safari, dan layar desktop.
+- Menambahkan header keamanan melalui platform hosting: Content Security Policy, `X-Content-Type-Options`, `Referrer-Policy`, dan perlindungan clickjacking.

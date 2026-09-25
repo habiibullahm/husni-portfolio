@@ -2,13 +2,8 @@ export interface Experience {
   organization: string;
   role: string;
   period: string;
-  caseStudy: {
-    context: string;
-    responsibility: string;
-    process: string;
-    deliverables: string;
-    toolsAndControls: string;
-  };
+  highlights: string[];
+  tools: string;
 }
 export interface Education { institution: string; degree: string; status?: string; period?: string; website: string }
 export interface FieldExperience { organization: string; role: string; period: string }
@@ -17,29 +12,32 @@ export const profile = {
   location: 'Jakarta, Indonesia',
   email: 'husniattin@gmail.com',
   linkedin: 'https://www.linkedin.com/in/husni-attin-83613224a/',
-  careerTarget: 'Healthcare Administration Staff',
+  careerTarget: 'Patient Admission & Healthcare Administration',
   portraitAlt: 'Husni Attin in a professional portrait wearing a black hijab and white blouse',
-  summary: 'Supporting efficient healthcare operations through patient administration, structured documentation, service excellence, and a foundation in environmental health.',
+  summary: 'Admission / Frontliner at Bidakara Medical Center, supporting outpatient registration, ODC pre-admission, patient data verification, insurance and referral checks, and patient communication. D-III Environmental Health graduate currently pursuing a Bachelor’s degree in Public Health.',
+  operationalTools: ['Clinic information system', 'Microsoft Excel', 'Microsoft Word', 'WhatsApp patient communication', 'Insurance and referral verification'],
+  profileNarrative: [
+    'I support patient-facing healthcare operations through registration, pre-admission, administrative verification, documentation, reporting, and clear communication with patients and internal teams.',
+    'My Environmental Health background strengthens my attention to sanitation, safety, accuracy, and service quality. My ongoing Public Health study adds a broader perspective on healthcare delivery. Together, these foundations support reliable patient-administration and front-office work.',
+  ],
   experiences: [
     {
       organization: 'Bidakara Medical Center (BIMC)', role: 'Admission / Frontliner', period: '20 January 2025 — Present',
-      caseStudy: {
-        context: 'Outpatient registration and one-day-care (ODC) pre-admission at a medical center.',
-        responsibility: 'Verify patient, insurance, referral, and administrative information while protecting confidentiality.',
-        process: 'Support online registration and patient information via WhatsApp, then coordinate with medical staff and cashiers. Respond to initial patient concerns.',
-        deliverables: 'Patient registration, ODC pre-admission, and coordinated service handoffs.',
-        toolsAndControls: 'Clinic information system, WhatsApp, operational procedures, and patient-data confidentiality.',
-      },
+      highlights: [
+        'Manage outpatient registration and ODC pre-admission, ensuring patient, referral, insurance, and administrative information is complete before service handoff.',
+        'Provide registration information through direct communication and WhatsApp, then coordinate with medical staff and cashiers to support smooth service flow.',
+        'Handle initial patient enquiries professionally while following operational procedures and protecting patient confidentiality.',
+      ],
+      tools: 'Clinic information system · WhatsApp · Operational procedures',
     },
     {
       organization: 'Bamed Health Care Group', role: 'Frontliner', period: '16 February 2023 — 20 June 2024',
-      caseStudy: {
-        context: 'Patient-facing billing and recurring clinic administration.',
-        responsibility: 'Handle patient invoices, treatment information, and insurance-claim payment administration.',
-        process: 'Prepare operational reports and track petty cash, utilities, payroll and medical-service deductions, and clinic supplies.',
-        deliverables: 'Weekly petty-cash reports and monthly records for operational costs, deductions, and clinic supplies.',
-        toolsAndControls: 'Microsoft Excel and Word; weekly and monthly reporting cadence.',
-      },
+      highlights: [
+        'Supported patient billing, treatment-information requests, and insurance-claim payment administration in a patient-facing clinic environment.',
+        'Prepared weekly petty-cash reports and monthly operational records for utilities, payroll deductions, medical-service deductions, and clinic supplies.',
+        'Used Microsoft Excel and Word to maintain recurring administrative reports and support clinic operations.',
+      ],
+      tools: 'Microsoft Excel · Microsoft Word · Weekly and monthly reporting',
     },
   ] satisfies Experience[],
   education: [
