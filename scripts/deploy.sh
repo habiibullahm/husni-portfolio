@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-: "${DEPLOY_HOST:?Set DEPLOY_HOST (e.g. deploy@example.com)}"
-: "${DEPLOY_PATH:?Set DEPLOY_PATH (e.g. /var/www/husni-portfolio)}"
-: "${SITE_URL:?Set SITE_URL to the canonical public URL}"
+DEPLOY_HOST="${DEPLOY_HOST:-${1:-bot-vps}}"
+DEPLOY_PATH="${DEPLOY_PATH:-/var/www/husniattin.my.id}"
+SITE_URL="${SITE_URL:-https://www.husniattin.my.id}"
 DEPLOY_PORT="${DEPLOY_PORT:-22}"
 
 if [[ ! "$DEPLOY_HOST" =~ ^[a-zA-Z0-9_][a-zA-Z0-9_.@-]*$ ||
@@ -14,8 +14,8 @@ if [[ ! "$DEPLOY_HOST" =~ ^[a-zA-Z0-9_][a-zA-Z0-9_.@-]*$ ||
   exit 1
 fi
 
-if ! command -v rsync >/dev/null || ! command -v ssh >/dev/null; then
-  echo "ssh and rsync are required locally and rsync is required on the VPS." >&2
+if ! command -v tar >/dev/null || ! command -v ssh >/dev/null; then
+  echo "tar and ssh are required locally; tar is required on the VPS." >&2
   exit 1
 fi
 
@@ -25,10 +25,11 @@ npm run check
 npm run build
 
 release="$DEPLOY_PATH/releases/$(date -u +%Y%m%d%H%M%S)-$RANDOM"
-ssh -p "$DEPLOY_PORT" "$DEPLOY_HOST" "mkdir -p '$release'"
-rsync -az -e "ssh -p $DEPLOY_PORT" dist/ "$DEPLOY_HOST:$release/"
-next="$DEPLOY_PATH/.current-$RANDOM"
-ssh -p "$DEPLOY_PORT" "$DEPLOY_HOST" \
-  "ln -s '$release' '$next' && mv -Tf '$next' '$DEPLOY_PATH/current'"
+ssh -o BatchMode=yes -p "$DEPLOY_PORT" "$DEPLOY_HOST" \
+  "sudo install -d -o \$(id -un) -g \$(id -gn) '$DEPLOY_PATH/releases'"
+tar -C dist -czf - . | ssh -o BatchMode=yes -p "$DEPLOY_PORT" "$DEPLOY_HOST" \
+  "mkdir -p '$release' && tar -xzf - -C '$release'"
+ssh -o BatchMode=yes -p "$DEPLOY_PORT" "$DEPLOY_HOST" \
+  "sudo ln -sfn '$release' '$DEPLOY_PATH/current'"
 
 echo "Deployed to $DEPLOY_HOST:$DEPLOY_PATH/current"
