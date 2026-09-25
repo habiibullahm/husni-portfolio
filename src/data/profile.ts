@@ -11,11 +11,9 @@ export interface Experience {
   };
 }
 export interface Education { institution: string; degree: string; status?: string; period?: string; website: string }
-export interface FieldExperience { organization: string; role: string; period: string; summary: string }
+export interface FieldExperience { organization: string; role: string; period: string }
 
 export const profile = {
-  name: 'Husni Attin',
-  headline: 'Healthcare Administration | Environmental Health | Public Health',
   location: 'Jakarta, Indonesia',
   email: 'husniattin@gmail.com',
   linkedin: 'https://www.linkedin.com/in/husni-attin-83613224a/',
@@ -49,10 +47,10 @@ export const profile = {
     { institution: 'Poltekkes Kemenkes Jakarta II', degree: 'Diploma III in Environmental Health', period: 'August 2019 — October 2022', website: 'https://poltekkesjkt2.ac.id/' },
   ] satisfies Education[],
   fieldExperience: [
-    { organization: 'RSPAD Gatot Soebroto', role: 'Sanitarian Intern', period: '18 October — 31 October 2021', summary: 'Conducted environmental health measurements, identified hospital sanitation conditions, and analyzed findings.' },
-    { organization: 'PT Dok & Perkapalan Kodja Bahari (Persero) — Galangan II', role: 'QHSE Intern', period: '1 November — 28 November 2021', summary: 'Conducted environmental health measurements and identification, then analyzed the findings.' },
-    { organization: 'Puskesmas Kecamatan Pasar Minggu', role: 'Sanitarian Intern', period: '29 November — 10 December 2021', summary: 'Performed environmental health assessments and workplace safety risk analysis across the district clinic and two urban clinics.' },
-    { organization: 'Puskesmas Kecamatan Baros', role: 'Environmental Health Intern', period: 'March 2022', summary: 'Supported sanitation-clinic services for patients with environmentally related illnesses.' },
+    { organization: 'RSPAD Gatot Soebroto', role: 'Sanitarian Intern', period: '18 October — 31 October 2021' },
+    { organization: 'PT Dok & Perkapalan Kodja Bahari (Persero) — Galangan II', role: 'QHSE Intern', period: '1 November — 28 November 2021' },
+    { organization: 'Puskesmas Kecamatan Pasar Minggu', role: 'Sanitarian Intern', period: '29 November — 10 December 2021' },
+    { organization: 'Puskesmas Kecamatan Baros', role: 'Environmental Health Intern', period: 'March 2022' },
   ] satisfies FieldExperience[],
   focusAreas: [
     ['Healthcare Administration', 'Patient-facing administrative workflows and operational support.'],

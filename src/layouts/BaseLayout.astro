@@ -7,13 +7,13 @@ const {
   description = 'Professional profile of Husni Attin, with experience in healthcare services and administration, a background in Environmental Health, and continued study in Public Health.',
 } = Astro.props;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
-const linkedIn = 'https://www.linkedin.com/in/husni-attin-83613224a/';
+import { profile } from '../data/profile';
 const personSchema = {
   '@context': 'https://schema.org', '@type': 'Person', name: 'Husni Attin',
   jobTitle: 'Admission / Frontliner', worksFor: { '@type': 'Organization', name: 'Bidakara Medical Center' },
   alumniOf: { '@type': 'EducationalOrganization', name: 'Poltekkes Kemenkes Jakarta II' },
   knowsAbout: ['Healthcare Administration', 'Environmental Health', 'Public Health', 'Patient Admission', 'Healthcare Service'],
-  sameAs: [linkedIn], address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
+  sameAs: [profile.linkedin], address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
 };
 ---
 <!doctype html>
@@ -35,7 +35,7 @@ const personSchema = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {Astro.site && <meta name="twitter:image" content={new URL('/og/husni-attin-og.jpg', Astro.site)} />}
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema).replace(/</g, '\\u003c')} />
     <title>{title}</title>
   </head>
   <body><slot /></body>

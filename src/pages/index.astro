@@ -18,7 +18,7 @@ const currentYear = new Date().getFullYear();
       <a class="nav-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile, opens in a new tab">LinkedIn <span aria-hidden="true">↗</span></a>
       <button class="language-toggle" type="button" data-language-toggle aria-label="Ganti bahasa ke Bahasa Indonesia">ID</button>
       <details class="mobile-nav">
-        <summary aria-label="Open navigation menu"><span></span><span></span></summary>
+        <summary aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span></summary>
         <nav aria-label="Mobile navigation">
           <a href="#profile">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#development">Development</a><a href="#contact">Contact</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </nav>
@@ -137,4 +137,28 @@ const currentYear = new Date().getFullYear();
 
   <footer class="site-footer"><div class="container footer-inner"><p>© {currentYear} Husni Attin</p><nav aria-label="Footer navigation"><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={`mailto:${profile.email}`}>Email</a><a href="#top">Back to top ↑</a></nav></div></footer>
   <script src="../scripts/language-toggle.ts"></script>
+  <script>
+    const mobileNav = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+    const siteHeader = document.querySelector<HTMLElement>('.site-header');
+    const mobileNavSummary = mobileNav?.querySelector<HTMLElement>('summary');
+
+    document.addEventListener('click', (event) => {
+      if (mobileNav?.open && siteHeader && !siteHeader.contains(event.target as Node)) mobileNav.open = false;
+    });
+
+    mobileNav?.addEventListener('toggle', () => {
+      mobileNavSummary?.setAttribute('aria-expanded', String(mobileNav.open));
+    });
+
+    mobileNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => { mobileNav.open = false; });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileNav?.open) {
+        mobileNav.open = false;
+        mobileNavSummary?.focus();
+      }
+    });
+  </script>
 </BaseLayout>
