@@ -46,7 +46,7 @@ Update portfolio details in `src/data/profile.ts`. Put files that should be serv
 
 ## Deployment Configuration
 
-Set `SITE_URL` to the canonical absolute URL when building for production. If it is not set, the Astro configuration uses `VERCEL_URL` when available. The sitemap integration is enabled when either deployment URL is configured.
+Set `SITE_URL` to the canonical absolute URL when building for production. The sitemap integration is enabled when `SITE_URL` is configured.
 
 ```sh
 SITE_URL=https://example.com npm run build

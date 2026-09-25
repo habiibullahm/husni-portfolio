@@ -28,4 +28,4 @@ No Git commits are available yet to establish a repository-specific convention. 
 
 ## Security & Configuration Tips
 
-Do not commit secrets or add private personal information beyond the portfolio content intentionally published here. Configure the canonical deployment URL through `SITE_URL` (or use `VERCEL_URL` in Vercel); do not hard-code deployment-specific URLs in page content.
+Do not commit secrets or add private personal information beyond the portfolio content intentionally published here. Configure the canonical deployment URL through `SITE_URL`; do not hard-code deployment-specific URLs in page content.
