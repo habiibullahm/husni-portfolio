@@ -14,7 +14,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/husni-attin-83613224a/',
   careerTarget: 'Patient Admission & Healthcare Administration',
   portraitAlt: 'Husni Attin in a professional portrait wearing a black hijab and white blouse',
-  summary: 'Admission / Frontliner at Bidakara Medical Center, supporting outpatient registration, ODC pre-admission, patient data verification, insurance and referral checks, and patient communication. D-III Environmental Health graduate currently pursuing a Bachelor’s degree in Public Health.',
+  summary: 'Admission / Frontliner at Bidakara Medical Center, supporting outpatient registration, ODC pre-registration, patient data verification, insurance and referral checks, and patient communication. D-III Environmental Health graduate currently pursuing a Bachelor’s degree in Public Health.',
   operationalTools: ['Clinic information system', 'Microsoft Excel', 'Microsoft Word', 'WhatsApp patient communication', 'Insurance and referral verification'],
   profileNarrative: [
     'I support patient-facing healthcare operations through registration, pre-admission, administrative verification, documentation, reporting, and clear communication with patients and internal teams.',
@@ -24,7 +24,7 @@ export const profile = {
     {
       organization: 'Bidakara Medical Center (BIMC)', role: 'Admission / Frontliner', period: '20 January 2025 — Present',
       highlights: [
-        'Manage outpatient registration and ODC pre-admission, ensuring patient, referral, insurance, and administrative information is complete before service handoff.',
+        'Manage outpatient registration and ODC pre-registration, ensuring patient, referral, insurance, and administrative information is complete before service handoff.',
         'Provide registration information through direct communication and WhatsApp, then coordinate with medical staff and cashiers to support smooth service flow.',
         'Handle initial patient enquiries professionally while following operational procedures and protecting patient confidentiality.',
       ],
